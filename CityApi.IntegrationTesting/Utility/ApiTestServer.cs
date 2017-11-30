@@ -12,7 +12,8 @@ namespace CityApi.IntegrationTests.Utility
         public InMemoryCityContext CityContext { get; }
 
         /// <summary>
-        ///     A wrapper around the TestServer, which also contains the EF contexts used in the API.
+        ///     A wrapper around the TestServer, which also contains the 
+        ///     EF contexts used in the API.
         /// </summary>
         public ApiTestServer()
         {
@@ -30,7 +31,8 @@ namespace CityApi.IntegrationTests.Utility
         
         /// <summary>
         ///     Register dependencies, which differ from the ordinary setup of the API. 
-        ///     For the registration here to work, you need to use the TryAdd* versions of container registration methods.
+        ///     For the registration here to work, you need to use the TryAdd* versions
+        ///     of container registration methods.
         /// </summary>
         private void RegisterDependencies(IServiceCollection service)
         {

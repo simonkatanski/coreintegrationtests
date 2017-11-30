@@ -67,7 +67,10 @@ namespace CityApi.IntegrationTests
                 var cityToAdd = new City { CityName = "Berlin", Population = 100000 };
                 var stringData = JsonConvert.SerializeObject(cityToAdd);
                 var request = server.CreateRequest("/api/cities")
-                    .And(c => c.Content = new StringContent(stringData, Encoding.UTF8, "application/json"));
+                    .And(c => c.Content = new StringContent(
+                        stringData, 
+                        Encoding.UTF8, 
+                        "application/json"));
 
                 //Act
                 var response = await request.PostAsync();

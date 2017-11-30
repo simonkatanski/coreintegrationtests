@@ -26,14 +26,7 @@ namespace CityApi.Controllers
             }
             return Enumerable.Empty<string>();
         }
-        
-        [HttpGet("cities/{id}")]
-        public string Get(int id)
-        {
-            var foundCity = _cityContext.Cities.FirstOrDefault(p => p.Id == id);
-            return foundCity?.CityName;
-        }
-        
+
         [HttpPost("cities")]
         public void Post([FromBody]City city)
         {
