@@ -17,11 +17,11 @@ namespace CityApi.IntegrationTests.Utility
         /// </summary>
         public ApiTestServer()
         {
+
+            CityContext = new InMemoryCityContext();
             _server = new TestServer(new WebHostBuilder()
                 .UseStartup<Startup>()
                 .ConfigureServices(RegisterDependencies));
-
-            CityContext = new InMemoryCityContext();
         }
 
         public RequestBuilder CreateRequest(string path)
@@ -36,12 +36,11 @@ namespace CityApi.IntegrationTests.Utility
         /// </summary>
         private void RegisterDependencies(IServiceCollection service)
         {
-            service.AddSingleton<ICityContext, InMemoryCityContext>(serviceProvider => CityContext);
+            service.AddSingleton<ICityContext>(CityContext);
         }
 
         public void Dispose()
         {
-            CityContext?.Dispose();
             _server?.Dispose();
         }
     }

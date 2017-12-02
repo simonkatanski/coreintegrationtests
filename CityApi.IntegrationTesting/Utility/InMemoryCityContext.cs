@@ -7,6 +7,9 @@ namespace CityApi.IntegrationTests.Utility
     public class InMemoryCityContext : CityContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
+        {
+            optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace CityApi.IntegrationTests
             using (var server = new ApiTestServer())
             {
                 //Arrange
-                server.CityContext.Add(new City {CityName = "Bristol", Population = 100000});
+                server.CityContext.Add(new City {CityName = "Bristol", Population = 100000, Id = 0});
                 server.CityContext.SaveChanges();
                 var request = server.CreateRequest("/api/cities");
 
@@ -41,7 +41,7 @@ namespace CityApi.IntegrationTests
             using (var server = new ApiTestServer())
             {
                 //Arrange
-                var cityToAdd = new City {CityName = "Bristol", Population = 100000};
+                var cityToAdd = new City {CityName = "Bristol", Population = 100000, Id = 0 };
                 var stringData = JsonConvert.SerializeObject(cityToAdd);
                 var request = server.CreateRequest("/api/cities")
                     .And(c => c.Content = new StringContent(stringData, Encoding.UTF8, "application/json"));
@@ -61,7 +61,7 @@ namespace CityApi.IntegrationTests
             using (var server = new ApiTestServer())
             {
                 //Arrange
-                server.CityContext.Add(new City { CityName = "Bristol", Population = 100000 });
+                server.CityContext.Add(new City { CityName = "Bristol", Population = 100000, Id = 0 });
                 server.CityContext.SaveChanges();
 
                 var cityToAdd = new City { CityName = "Berlin", Population = 100000 };
